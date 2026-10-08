@@ -11,6 +11,7 @@ import {
   ContactPage,
 } from "@/components/sections/site-pages";
 type Params = { locale: string; slug?: string[] };
+export const dynamicParams = false;
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
     allPaths().map((path) => ({ locale, slug: path ? [path] : [] })),

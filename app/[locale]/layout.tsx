@@ -11,7 +11,13 @@ import "@/styles/site.css";
 export const metadata: Metadata = {
   title: { default: "Index", template: "%s | Index" },
   robots: { index: indexable, follow: indexable },
-  ...(company.favicon ? { icons: { icon: company.favicon } } : {}),
+  ...(company.favicon
+    ? {
+        icons: {
+          icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${company.favicon}`,
+        },
+      }
+    : {}),
 };
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
